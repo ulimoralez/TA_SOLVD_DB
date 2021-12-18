@@ -108,9 +108,7 @@ ALTER TABLE `Course_Category` ADD FOREIGN KEY (`category_id`) REFERENCES `Catego
 
 ALTER TABLE `Course` ADD FOREIGN KEY (`video_id`) REFERENCES `Video` (`id`);
 
-ALTER TABLE `Hosting` ADD FOREIGN KEY (`id`) REFERENCES `Video` (`hosting_id`);
-
-ALTER TABLE `Hosting` ADD FOREIGN KEY (`video_id`) REFERENCES `Video` (`id`);
+ALTER TABLE `Video` ADD FOREIGN KEY (`hosting_id`) REFERENCES `Hosting` (`id`);
 
 ALTER TABLE `Course_LearningPath` ADD FOREIGN KEY (`course_id`) REFERENCES `Course` (`id`);
 
@@ -118,11 +116,11 @@ ALTER TABLE `Course_LearningPath` ADD FOREIGN KEY (`learning_path_id`) REFERENCE
 
 ALTER TABLE `Course` ADD FOREIGN KEY (`professor_id`) REFERENCES `Professor` (`id`);
 
-ALTER TABLE `Student` ADD FOREIGN KEY (`id`) REFERENCES `Course` (`student_id`);
+ALTER TABLE `Course` ADD FOREIGN KEY (`student_id`) REFERENCES `Student` (`id`);
 
-ALTER TABLE `Professor` ADD FOREIGN KEY (`id`) REFERENCES `College` (`professor_id`);
+ALTER TABLE `College` ADD FOREIGN KEY (`professor_id`) REFERENCES `Professor` (`id`);
 
-ALTER TABLE `Student` ADD FOREIGN KEY (`id`) REFERENCES `College` (`student_id`);
+ALTER TABLE `College` ADD FOREIGN KEY (`student_id`) REFERENCES `Student` (`id`);
 
 ALTER TABLE `Specialization_Professor` ADD FOREIGN KEY (`professor_id`) REFERENCES `Professor` (`id`);
 
