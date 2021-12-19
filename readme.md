@@ -61,20 +61,20 @@ The Hosting Table contains this columns.
 - **maximun_storage_gb**: Contains the maximum of space that we can use.
 - **plans**: Contains the plans for storage.
 
-## Learning_Path
+### Learning_Path
 The Learning_Path Table contains this columns.
 - **id**: Contains the id of the Learning Path
 - **name**: Contains the name of the Learning Path. For example: Test Automation
 - **description**: Contains the description of the Learning Path. For Example: In this learning path you will learn about the tools and good practices to be the best Test Automation Engineer.
 - **creation_date**: Contains the creation date of the Learning Path
 
-## Course_LearningPath
+### Course_LearningPath
 This Table works as an union of the Course Table and Learning_Path Table, contains this columns.
 - **id**: Contains the id of the union.
 - **course_id**: Contains the id of the course.
 - **learning_path_id**: Contains the id of the Learning Path.
 
-## Professor
+### Professor
 The Professor Table contains this columns.
 - **id**: Contains the id of the Professor.
 - **specialization_id**: Contains the id's of the especializations.
@@ -82,14 +82,14 @@ The Professor Table contains this columns.
 - **lastname**: Contains the lastname of the professor.
 - **age**: Contains the age of the professor.
 
-## Student
+### Student
 The Student Table contains this columns.
 - **id**: Contains the id of the Student.
 - **firstname**: Contains the firstname of the Student.
 - **lastname**: Contains the lastname of the Student.
 - **age**: Contains the age of the Student.
 
-## College
+### College
 The College Table contains this columns.
 - **id**: Contains the id of the College.
 - **professor_id**: Contains the id's of the professors in the college.
@@ -97,20 +97,20 @@ The College Table contains this columns.
 - **name**: Contains the name of the college
 - **foundation_age**: Contains the foundation age of the college.
 
-## Specialization
+### Specialization
 The Specialization Table contains this columns.
 - **id**: Contains the id of the Specialization.
 - **name**: Contains the name of the Specialization. For example: Master in Java
 - **description**: Contains the description of the Specialization. For example: This master in Java certifies that you have the necessary knowledge to practice your work as a professional in Java.
 - **foundation_age**: Contains the age of the foundation of the specialization.
 
-## Specialization_Professor
+### Specialization_Professor
 This Table works as an union of the Specialization Table and Professor Table, contains this columns.
 - **id**: Contains the id of the union.
 - **professor_id**: Contains the id of the professor.
 - **specialization_id**:Contains the id of the specialization.
 
-## Specialization_College
+### Specialization_College
 This Table works as an union of the Specialization Table and College Table, contains this columns.
 - **id**: Contains the id of the union.
 - **college_id**: Contains the id of the college.
