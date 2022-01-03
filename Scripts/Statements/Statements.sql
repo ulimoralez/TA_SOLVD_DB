@@ -1,19 +1,18 @@
 use ta_lab;
 
 -- Right Join
-select cm.course_id, p.id, p.firstname, p.lastname, s.id, s.firstname, s.lastname 
-from course_members cm
-right join professor p on cm.professor_id = p.id 
-right join student s on cm.student_id = s.id ;
+select *
+from course cm
+right join course_professor cp on cm.courseId = cp.courseId;
 
 select *
 from professor p 
-right join course_members cm on p.id = cm.professor_id
-where cm.professor_id is null;
+right join course_professor cm on p.id = cm.professorid
+where cm.professorid is null;
 
 -- Left Join
-select cm.course_id, p.id, p.firstname, p.lastname, s.id, s.firstname, s.lastname 
-from course_members cm
+select *
+from course_professor cm
 left join professor p on cm.professor_id = p.id 
 left join student s on cm.student_id = s.id;
 

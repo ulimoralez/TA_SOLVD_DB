@@ -10,132 +10,149 @@ CREATE DATABASE IF NOT EXISTS ta_lab;
 
 USE ta_lab;
 
-CREATE TABLE IF NOT EXISTS `Course` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `video_id` int,
-  `learning_path_id` int,
+CREATE TABLE `Course` (
+  `courseId` int PRIMARY KEY AUTO_INCREMENT,
+  `learningPathId` int,
+  `name` varchar(255),
   `description` varchar(255),
   `duration_hs` float,
-  `name` varchar(255),
   `creation_date` datetime
 );
 
-CREATE TABLE IF NOT EXISTS `Course_Members` (
+CREATE TABLE `Course_Category` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `course_id` int,
-  `professor_id` int,
-  `student_id` int
+  `courseId` int,
+  `categoryId` int
 );
 
-
-CREATE TABLE IF NOT EXISTS `Course_Category` (
+CREATE TABLE `Course_Video` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `course_id` int,
-  `category_id` int
+  `courseId` int,
+  `videoId` int
 );
 
-CREATE TABLE IF NOT EXISTS `Category` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE `Category` (
+  `categoryId` int PRIMARY KEY AUTO_INCREMENT,
   `description` varchar(255),
   `name` varchar(255)
 );
 
-CREATE TABLE IF NOT EXISTS `Video` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `hosting_id` int,
+CREATE TABLE `Video` (
+  `videoId` int PRIMARY KEY AUTO_INCREMENT,
+  `hostingId` int,
   `name` varchar(255),
   `description` varchar(255),
   `duration_mns` int
 );
 
-CREATE TABLE IF NOT EXISTS `Hosting` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `video_id` int,
+CREATE TABLE `Hosting` (
+  `hostingId` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `maximum_storage_gb` int,
   `plans` varchar(255)
 );
 
-CREATE TABLE IF NOT EXISTS `Course_LearningPath` (
+CREATE TABLE `Course_LearningPath` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `course_id` int,
-  `learning_path_id` int
+  `courseId` int,
+  `learningPathId` int
 );
 
-CREATE TABLE IF NOT EXISTS `Learning_Path` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE `LearningPath` (
+  `learningPathId` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `description` varchar(255),
   `creation_date` datetime
 );
 
-CREATE TABLE IF NOT EXISTS `Professor` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `specialization_id` int,
+CREATE TABLE `Professor` (
+  `professorId` int PRIMARY KEY AUTO_INCREMENT,
+  `specializationId` int,
   `firstname` varchar(255),
   `lastname` varchar(255),
   `age` int
 );
 
-CREATE TABLE IF NOT EXISTS `Student` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE `Student` (
+  `studentId` int PRIMARY KEY AUTO_INCREMENT,
   `firstname` varchar(255),
   `lastname` varchar(255),
   `age` int
 );
 
-CREATE TABLE IF NOT EXISTS `College` (
+CREATE TABLE `Course_Professor` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
+  `professorId` int,
+  `courseId` int
+);
+
+CREATE TABLE `Course_Student` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `studentId` int,
+  `courseId` int
+);
+
+CREATE TABLE `College` (
+  `collegeId` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `foundation_age` datetime
 );
 
-CREATE TABLE IF NOT EXISTS `College_Members` (
+CREATE TABLE `College_Professor` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `college_id` int,
-  `professor_id` int,
-  `student_id` int
+  `collegeId` int,
+  `professorId` int
 );
 
-CREATE TABLE IF NOT EXISTS `Specialization` (
+CREATE TABLE `College_Student` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
+  `collegeId` int,
+  `studentId` int
+);
+
+CREATE TABLE `Specialization` (
+  `specializationId` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `description` varchar(255),
   `foundation_age` datetime
 );
 
-CREATE TABLE IF NOT EXISTS `Specialization_Professor` (
+CREATE TABLE `Specialization_Professor` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `professor_id` int,
-  `specialization_id` int
+  `professorId` int,
+  `specializationId` int
 );
 
+ALTER TABLE `Course_Professor` ADD FOREIGN KEY (`professorId`) REFERENCES `Professor` (`professorId`);
 
-CREATE TABLE IF NOT EXISTS `Specialization_College` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `college_id` int,
-  `specialization_id` int
-);
-ALTER TABLE `Course` ADD FOREIGN KEY (`video_id`) REFERENCES `Video` (`id`);
+ALTER TABLE `Course_Professor` ADD FOREIGN KEY (`courseId`) REFERENCES `Course` (`courseId`);
 
-ALTER TABLE `Course_Members` ADD FOREIGN KEY (`course_id`) REFERENCES `Course` (`id`);
-ALTER TABLE `Course_Members` ADD FOREIGN KEY (`professor_id`) REFERENCES `Professor` (`id`);
-ALTER TABLE `Course_Members` ADD FOREIGN KEY (`student_id`) REFERENCES `Student` (`id`);
+ALTER TABLE `Course_Student` ADD FOREIGN KEY (`studentId`) REFERENCES `Student` (`studentId`);
 
-ALTER TABLE `Course_Category` ADD FOREIGN KEY (`course_id`) REFERENCES `Course` (`id`);
-ALTER TABLE `Course_Category` ADD FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`);
+ALTER TABLE `Course_Student` ADD FOREIGN KEY (`courseId`) REFERENCES `Course` (`courseId`);
 
-ALTER TABLE `Video` ADD FOREIGN KEY (`hosting_id`) REFERENCES `Hosting` (`id`);
+ALTER TABLE `Course_LearningPath` ADD FOREIGN KEY (`courseId`) REFERENCES `Course` (`courseId`);
 
-ALTER TABLE `Course_LearningPath` ADD FOREIGN KEY (`course_id`) REFERENCES `Course` (`id`);
-ALTER TABLE `Course_LearningPath` ADD FOREIGN KEY (`learning_path_id`) REFERENCES `Learning_Path` (`id`);
+ALTER TABLE `Course_LearningPath` ADD FOREIGN KEY (`learningPathId`) REFERENCES `LearningPath` (`learningPathId`);
 
-ALTER TABLE `College_Members` ADD FOREIGN KEY (`professor_id`) REFERENCES `Professor` (`id`);
-ALTER TABLE `College_Members` ADD FOREIGN KEY (`student_id`) REFERENCES `Student` (`id`);
-ALTER TABLE `College_Members` ADD FOREIGN KEY (`college_id`) REFERENCES `College` (`id`);
+ALTER TABLE `Course_Category` ADD FOREIGN KEY (`courseId`) REFERENCES `Course` (`courseId`);
 
-ALTER TABLE `Specialization_Professor` ADD FOREIGN KEY (`professor_id`) REFERENCES `Professor` (`id`);
-ALTER TABLE `Specialization_Professor` ADD FOREIGN KEY (`specialization_id`) REFERENCES `Specialization` (`id`);
+ALTER TABLE `Course_Category` ADD FOREIGN KEY (`categoryId`) REFERENCES `Category` (`categoryId`);
 
-ALTER TABLE `Specialization_College` ADD FOREIGN KEY (`college_id`) REFERENCES `College` (`id`);
-ALTER TABLE `Specialization_College` ADD FOREIGN KEY (`specialization_id`) REFERENCES `Specialization` (`id`);
+ALTER TABLE `Video` ADD FOREIGN KEY (`hostingId`) REFERENCES `Hosting` (`hostingId`);
+
+ALTER TABLE `Course_Video` ADD FOREIGN KEY (`courseId`) REFERENCES `Course` (`courseId`);
+
+ALTER TABLE `Course_Video` ADD FOREIGN KEY (`videoId`) REFERENCES `Video` (`videoId`);
+
+ALTER TABLE `College_Professor` ADD FOREIGN KEY (`collegeId`) REFERENCES `College` (`collegeId`);
+
+ALTER TABLE `College_Student` ADD FOREIGN KEY (`collegeId`) REFERENCES `College` (`collegeId`);
+
+ALTER TABLE `College_Student` ADD FOREIGN KEY (`studentId`) REFERENCES `Student` (`studentId`);
+
+ALTER TABLE `College_Professor` ADD FOREIGN KEY (`professorId`) REFERENCES `Professor` (`professorId`);
+
+ALTER TABLE `Specialization_Professor` ADD FOREIGN KEY (`professorId`) REFERENCES `Professor` (`professorId`);
+
+ALTER TABLE `Specialization_Professor` ADD FOREIGN KEY (`specializationId`) REFERENCES `Specialization` (`specializationId`);
