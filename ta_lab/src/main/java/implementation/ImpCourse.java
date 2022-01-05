@@ -134,7 +134,14 @@ public class ImpCourse implements IDAO<Course>{
 	}
 	
 	private Course createObject(ResultSet resultSet) throws SQLException{
-		return new Course( resultSet.getInt( 1 ), resultSet.getInt( 2 ),resultSet.getInt( 3 ),
-				resultSet.getString( 4 ), resultSet.getString( 5 ), resultSet.getInt( 6 ) );
+		int courseId = resultSet.getInt( 1 );
+		int learningPathId = resultSet.getInt( 2 );
+		int videoId = 0;
+		String name = resultSet.getString( 3 );
+		String desc = resultSet.getString( 4 );
+		int duration_hs = resultSet.getInt( 5 );
+		
+		return new Course( courseId, learningPathId,videoId,
+				name, desc, duration_hs );
 	}
 }

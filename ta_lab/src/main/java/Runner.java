@@ -63,7 +63,7 @@ public class Runner {
          */
     
         //ImpCourse
-        LOGGER.info( "Get index 1: " + impCourse.get( 1 ));
+        LOGGER.info( "Get index 1: " + impCourse.get( 5 ));
     
         LOGGER.info( "GetAll " + impCourse.getAll() );
     
