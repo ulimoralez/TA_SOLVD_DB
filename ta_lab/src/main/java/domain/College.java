@@ -1,57 +1,55 @@
 package domain;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
-public class College {
-    private int id;
-    private String name;
-    private Timestamp foundationAge;
-    
-    public College() {
-    }
-    
-    public College(String name, Timestamp foundationAge) {
-        this.id = id;
-        this.name = name;
-        this.foundationAge = foundationAge;
-    }
-
-    public College(String name, Timestamp foundationAge, int id) {
-        this(name, foundationAge );
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Timestamp getFoundationAge() {
-        return foundationAge;
-    }
-
-    public void setFoundationAge(Timestamp foundationAge) {
-        this.foundationAge = foundationAge;
-    }
-
-    @Override
-    public String toString() {
-        return "College{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", foundationAge=" + foundationAge +
-                '}';
-    }
+public class College{
+	private int id;
+	private String name;
+	private Timestamp foundationAge;
+	
+	public College( ){
+	}
+	
+	public College( String name, Timestamp foundationAge, int id ){
+		this( name, foundationAge );
+		this.id = id;
+	}
+	
+	public College( String name, Timestamp foundationAge ){
+		this.name = name;
+		this.foundationAge = foundationAge;
+	}
+	
+	public int getId( ){
+		return id;
+	}
+	
+	public void setId( int id ){
+		this.id = id;
+	}
+	
+	public String getName( ){
+		return name;
+	}
+	
+	public void setName( String name ){
+		this.name = name;
+	}
+	
+	public Timestamp getFoundationAge( ){
+		return foundationAge;
+	}
+	
+	public void setFoundationAge( Timestamp foundationAge ){
+		this.foundationAge = foundationAge;
+	}
+	
+	@Override
+	public String toString( ){
+		return "College{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", foundationAge=" + foundationAge +
+				'}';
+	}
 }
