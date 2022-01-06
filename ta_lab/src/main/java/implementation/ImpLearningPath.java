@@ -1,7 +1,7 @@
 package implementation;
 
 import connection.DBConnection;
-import domain.Course;
+import domain.LearningPath;
 import interfaces.IDAO;
 
 import java.sql.Connection;
@@ -13,29 +13,30 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-public class ImpCourse implements IDAO< Course >{
-	private final Logger LOGGER = Logger.getLogger( ImpCourse.class.getName( ) );
-	private final String tableName = "course";
+public class ImpLearningPath implements IDAO< LearningPath >{
+	
+	private final Logger LOGGER = Logger.getLogger( ImpLearningPath.class.getName( ) );
+	private final String tableName = "learningpath";
 	//SQL QUERIES - PreparedStatement
 	private final String GET = "SELECT * FROM " + tableName + " WHERE " + tableName + "Id=?";
 	private final String GETALL = "SELECT * FROM " + tableName;
-	private final String INSERT = "INSERT INTO " + tableName + " (learningpathid, name, description, duration_hs, " +
-			"creation_date) " +
-			"VALUES (?, ?, ?, ?, ?)";
+	private final String INSERT = "INSERT INTO " + tableName + " ( name, description, creation_date) " +
+			"VALUES (?, ?, ?)";
 	private final String UPDATE =
-			"UPDATE " + tableName + " SET learningpathid=?, name=?, description=?, duration_hs=? WHERE" +
+			"UPDATE " + tableName + " SET name=?, description=?, creation_date=? WHERE" +
 					" " + tableName +
 					"Id=?";
 	private final String DELETE = "DELETE FROM " + tableName + " WHERE " + tableName + "Id=?";
-	ArrayList< Course > getAllResponse = new ArrayList<>( );
+	ArrayList< LearningPath > getAllResponse = new ArrayList<>( );
 	private Connection dbconnection;
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
-	private Course getObject;
-	private Optional< Course > getResponse = Optional.empty( );
+	//Change class
+	private LearningPath getObject;
+	private Optional< LearningPath > getResponse = Optional.empty( );
 	
 	@Override
-	public Optional< Course > get( int id ){
+	public Optional< LearningPath > get( int id ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( GET );
@@ -58,7 +59,7 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public List< Course > getAll( ){
+	public List< LearningPath > getAll( ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( GETALL );
@@ -76,15 +77,13 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void save( Course course ){
+	public void save( LearningPath learningPath ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( INSERT, PreparedStatement.RETURN_GENERATED_KEYS );
-			preparedStatement.setInt( 1, course.getLearninPathId( ) );
-			preparedStatement.setString( 2, course.getName( ) );
-			preparedStatement.setString( 3, course.getDescription( ) );
-			preparedStatement.setInt( 4, course.getDurationHS( ) );
-			preparedStatement.setInt( 5, course.getId( ) );
+			preparedStatement.setString( 1, learningPath.getName( ) );
+			preparedStatement.setString( 2, learningPath.getDescription( ) );
+			preparedStatement.setTimestamp( 3, learningPath.getCreationDate( ) );
 			
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
@@ -96,15 +95,14 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void update( Course course ){
+	public void update( LearningPath learningPath ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( UPDATE );
-			preparedStatement.setInt( 1, course.getLearninPathId( ) );
-			preparedStatement.setString( 2, course.getName( ) );
-			preparedStatement.setString( 3, course.getDescription( ) );
-			preparedStatement.setInt( 4, course.getDurationHS( ) );
-			preparedStatement.setInt( 5, course.getId( ) );
+			preparedStatement.setString( 1, learningPath.getName( ) );
+			preparedStatement.setString( 2, learningPath.getDescription( ) );
+			preparedStatement.setTimestamp( 3, learningPath.getCreationDate( ) );
+			preparedStatement.setInt( 4, learningPath.getId( ) );
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
 			dbconnection.close( );
@@ -116,11 +114,11 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void delete( Course course ){
+	public void delete( LearningPath learningPath ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( DELETE );
-			preparedStatement.setInt( 1, course.getId( ) );
+			preparedStatement.setInt( 1, learningPath.getId( ) );
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
 			dbconnection.close( );
@@ -130,15 +128,12 @@ public class ImpCourse implements IDAO< Course >{
 		}
 	}
 	
-	private Course createObject( ResultSet resultSet ) throws SQLException{
-		int courseId = resultSet.getInt( 1 );
-		int learningPathId = resultSet.getInt( 2 );
-		int videoId = 0;
-		String name = resultSet.getString( 3 );
-		String desc = resultSet.getString( 4 );
-		int duration_hs = resultSet.getInt( 5 );
-		
-		return new Course( courseId, learningPathId, videoId,
-				name, desc, duration_hs );
+	private LearningPath createObject( ResultSet resultSet ) throws SQLException{
+		LearningPath learningPath = new LearningPath( );
+		learningPath.setId( resultSet.getInt( 1 ) );
+		learningPath.setName( resultSet.getString( 2 ) );
+		learningPath.setDescription( resultSet.getString( 3 ) );
+		learningPath.setCreationDate( resultSet.getTimestamp( 4 ) );
+		return learningPath;
 	}
 }

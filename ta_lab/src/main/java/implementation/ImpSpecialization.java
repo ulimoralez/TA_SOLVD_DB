@@ -1,7 +1,7 @@
 package implementation;
 
 import connection.DBConnection;
-import domain.Course;
+import domain.Specialization;
 import interfaces.IDAO;
 
 import java.sql.Connection;
@@ -13,29 +13,29 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-public class ImpCourse implements IDAO< Course >{
-	private final Logger LOGGER = Logger.getLogger( ImpCourse.class.getName( ) );
-	private final String tableName = "course";
+public class ImpSpecialization implements IDAO< Specialization >{
+	private final Logger LOGGER = Logger.getLogger( ImpSpecialization.class.getName( ) );
+	private final String tableName = "specialization";
 	//SQL QUERIES - PreparedStatement
 	private final String GET = "SELECT * FROM " + tableName + " WHERE " + tableName + "Id=?";
 	private final String GETALL = "SELECT * FROM " + tableName;
-	private final String INSERT = "INSERT INTO " + tableName + " (learningpathid, name, description, duration_hs, " +
-			"creation_date) " +
-			"VALUES (?, ?, ?, ?, ?)";
+	private final String INSERT = "INSERT INTO " + tableName + " ( name, description, foundation_age) " +
+			"VALUES (?, ?, ?)";
 	private final String UPDATE =
-			"UPDATE " + tableName + " SET learningpathid=?, name=?, description=?, duration_hs=? WHERE" +
+			"UPDATE " + tableName + " SET name=?, description=?, foundation_age=? WHERE" +
 					" " + tableName +
 					"Id=?";
 	private final String DELETE = "DELETE FROM " + tableName + " WHERE " + tableName + "Id=?";
-	ArrayList< Course > getAllResponse = new ArrayList<>( );
+	ArrayList< Specialization > getAllResponse = new ArrayList<>( );
 	private Connection dbconnection;
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
-	private Course getObject;
-	private Optional< Course > getResponse = Optional.empty( );
+	//Change class
+	private Specialization getObject;
+	private Optional< Specialization > getResponse = Optional.empty( );
 	
 	@Override
-	public Optional< Course > get( int id ){
+	public Optional< Specialization > get( int id ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( GET );
@@ -58,7 +58,7 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public List< Course > getAll( ){
+	public List< Specialization > getAll( ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( GETALL );
@@ -76,15 +76,13 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void save( Course course ){
+	public void save( Specialization specialization ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( INSERT, PreparedStatement.RETURN_GENERATED_KEYS );
-			preparedStatement.setInt( 1, course.getLearninPathId( ) );
-			preparedStatement.setString( 2, course.getName( ) );
-			preparedStatement.setString( 3, course.getDescription( ) );
-			preparedStatement.setInt( 4, course.getDurationHS( ) );
-			preparedStatement.setInt( 5, course.getId( ) );
+			preparedStatement.setString( 1, specialization.getName( ) );
+			preparedStatement.setString( 2, specialization.getDescription( ) );
+			preparedStatement.setTimestamp( 3, specialization.getFoundationAge( ) );
 			
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
@@ -96,15 +94,14 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void update( Course course ){
+	public void update( Specialization specialization ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( UPDATE );
-			preparedStatement.setInt( 1, course.getLearninPathId( ) );
-			preparedStatement.setString( 2, course.getName( ) );
-			preparedStatement.setString( 3, course.getDescription( ) );
-			preparedStatement.setInt( 4, course.getDurationHS( ) );
-			preparedStatement.setInt( 5, course.getId( ) );
+			preparedStatement.setString( 1, specialization.getName( ) );
+			preparedStatement.setString( 2, specialization.getDescription( ) );
+			preparedStatement.setTimestamp( 3, specialization.getFoundationAge( ) );
+			preparedStatement.setInt( 4, specialization.getId( ) );
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
 			dbconnection.close( );
@@ -116,11 +113,11 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void delete( Course course ){
+	public void delete( Specialization specialization ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( DELETE );
-			preparedStatement.setInt( 1, course.getId( ) );
+			preparedStatement.setInt( 1, specialization.getId( ) );
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
 			dbconnection.close( );
@@ -130,15 +127,12 @@ public class ImpCourse implements IDAO< Course >{
 		}
 	}
 	
-	private Course createObject( ResultSet resultSet ) throws SQLException{
-		int courseId = resultSet.getInt( 1 );
-		int learningPathId = resultSet.getInt( 2 );
-		int videoId = 0;
-		String name = resultSet.getString( 3 );
-		String desc = resultSet.getString( 4 );
-		int duration_hs = resultSet.getInt( 5 );
-		
-		return new Course( courseId, learningPathId, videoId,
-				name, desc, duration_hs );
+	private Specialization createObject( ResultSet resultSet ) throws SQLException{
+		Specialization specialization = new Specialization( );
+		specialization.setId( resultSet.getInt( 1 ) );
+		specialization.setName( resultSet.getString( 2 ) );
+		specialization.setDescription( resultSet.getString( 3 ) );
+		specialization.setFoundationAge( resultSet.getTimestamp( 4 ) );
+		return specialization;
 	}
 }

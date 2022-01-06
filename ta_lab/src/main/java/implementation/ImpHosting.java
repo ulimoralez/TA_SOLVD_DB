@@ -1,7 +1,7 @@
 package implementation;
 
 import connection.DBConnection;
-import domain.Course;
+import domain.Hosting;
 import interfaces.IDAO;
 
 import java.sql.Connection;
@@ -13,29 +13,28 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-public class ImpCourse implements IDAO< Course >{
-	private final Logger LOGGER = Logger.getLogger( ImpCourse.class.getName( ) );
-	private final String tableName = "course";
+public class ImpHosting implements IDAO< Hosting >{
+	private final Logger LOGGER = Logger.getLogger( ImpHosting.class.getName( ) );
+	private final String tableName = "hosting";
 	//SQL QUERIES - PreparedStatement
 	private final String GET = "SELECT * FROM " + tableName + " WHERE " + tableName + "Id=?";
 	private final String GETALL = "SELECT * FROM " + tableName;
-	private final String INSERT = "INSERT INTO " + tableName + " (learningpathid, name, description, duration_hs, " +
-			"creation_date) " +
-			"VALUES (?, ?, ?, ?, ?)";
+	private final String INSERT = "INSERT INTO " + tableName + " ( name, maximum_storage_gb, plans) " +
+			"VALUES (?, ?, ?)";
 	private final String UPDATE =
-			"UPDATE " + tableName + " SET learningpathid=?, name=?, description=?, duration_hs=? WHERE" +
+			"UPDATE " + tableName + " SET name=?, maximum_storage_gb=?, plans=? WHERE" +
 					" " + tableName +
 					"Id=?";
 	private final String DELETE = "DELETE FROM " + tableName + " WHERE " + tableName + "Id=?";
-	ArrayList< Course > getAllResponse = new ArrayList<>( );
+	ArrayList< Hosting > getAllResponse = new ArrayList<>( );
 	private Connection dbconnection;
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
-	private Course getObject;
-	private Optional< Course > getResponse = Optional.empty( );
+	private Hosting getObject;
+	private Optional< Hosting > getResponse = Optional.empty( );
 	
 	@Override
-	public Optional< Course > get( int id ){
+	public Optional< Hosting > get( int id ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( GET );
@@ -58,7 +57,7 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public List< Course > getAll( ){
+	public List< Hosting > getAll( ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( GETALL );
@@ -76,15 +75,13 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void save( Course course ){
+	public void save( Hosting hosting ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( INSERT, PreparedStatement.RETURN_GENERATED_KEYS );
-			preparedStatement.setInt( 1, course.getLearninPathId( ) );
-			preparedStatement.setString( 2, course.getName( ) );
-			preparedStatement.setString( 3, course.getDescription( ) );
-			preparedStatement.setInt( 4, course.getDurationHS( ) );
-			preparedStatement.setInt( 5, course.getId( ) );
+			preparedStatement.setString( 1, hosting.getName( ) );
+			preparedStatement.setInt( 2, hosting.getMaximumStorageGB( ) );
+			preparedStatement.setString( 3, hosting.getPlans( ) );
 			
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
@@ -96,15 +93,14 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void update( Course course ){
+	public void update( Hosting hosting ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( UPDATE );
-			preparedStatement.setInt( 1, course.getLearninPathId( ) );
-			preparedStatement.setString( 2, course.getName( ) );
-			preparedStatement.setString( 3, course.getDescription( ) );
-			preparedStatement.setInt( 4, course.getDurationHS( ) );
-			preparedStatement.setInt( 5, course.getId( ) );
+			preparedStatement.setString( 1, hosting.getName( ) );
+			preparedStatement.setInt( 2, hosting.getMaximumStorageGB( ) );
+			preparedStatement.setString( 3, hosting.getPlans( ) );
+			preparedStatement.setInt( 4, hosting.getId( ) );
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
 			dbconnection.close( );
@@ -116,11 +112,11 @@ public class ImpCourse implements IDAO< Course >{
 	}
 	
 	@Override
-	public void delete( Course course ){
+	public void delete( Hosting hosting ){
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( DELETE );
-			preparedStatement.setInt( 1, course.getId( ) );
+			preparedStatement.setInt( 1, hosting.getId( ) );
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );
 			dbconnection.close( );
@@ -130,15 +126,13 @@ public class ImpCourse implements IDAO< Course >{
 		}
 	}
 	
-	private Course createObject( ResultSet resultSet ) throws SQLException{
-		int courseId = resultSet.getInt( 1 );
-		int learningPathId = resultSet.getInt( 2 );
-		int videoId = 0;
-		String name = resultSet.getString( 3 );
-		String desc = resultSet.getString( 4 );
-		int duration_hs = resultSet.getInt( 5 );
-		
-		return new Course( courseId, learningPathId, videoId,
-				name, desc, duration_hs );
+	private Hosting createObject( ResultSet resultSet ) throws SQLException{
+		//int videoId, String name, int maximumStorageGB, String plans
+		Hosting hosting = new Hosting( );
+		hosting.setId( resultSet.getInt( 1 ) );
+		hosting.setName( resultSet.getString( 2 ) );
+		hosting.setMaximumStorageGB( resultSet.getInt( 3 ) );
+		hosting.setPlans( resultSet.getString( 4 ) );
+		return hosting;
 	}
 }
