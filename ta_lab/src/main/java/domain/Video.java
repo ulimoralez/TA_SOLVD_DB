@@ -7,7 +7,7 @@ public class Video{
 	private String description;
 	private int durationMinutes;
 	
-	public Video(){
+	public Video( ){
 	
 	}
 	

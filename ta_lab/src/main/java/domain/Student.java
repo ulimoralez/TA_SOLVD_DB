@@ -6,7 +6,7 @@ public class Student{
 	private String lastname;
 	private int age;
 	
-	public Student(){
+	public Student( ){
 	
 	}
 	

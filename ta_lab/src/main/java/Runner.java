@@ -15,11 +15,11 @@ public class Runner{
 		ImpCollege impCollege = new ImpCollege( );
 		ImpCourse impCourse = new ImpCourse( );
 		ImpHosting impHosting = new ImpHosting( );
-        ImpLearningPath impLearningPath = new ImpLearningPath();
-		ImpProfessor impProfessor = new ImpProfessor();
-		ImpSpecialization impSpecialization = new ImpSpecialization();
-		ImpStudent impStudent = new ImpStudent();
-		ImpVideo impVideo = new ImpVideo();
+		ImpLearningPath impLearningPath = new ImpLearningPath( );
+		ImpProfessor impProfessor = new ImpProfessor( );
+		ImpSpecialization impSpecialization = new ImpSpecialization( );
+		ImpStudent impStudent = new ImpStudent( );
+		ImpVideo impVideo = new ImpVideo( );
 		
 		Category cat = new Category( "TestCategory", "TestInsertion" );
 		Category catUpdate = new Category( 5, "TestCategoryUpdated", "TestInsertion" );
@@ -33,16 +33,16 @@ public class Runner{
 		
 		Hosting hosting = new Hosting( 1, 1, "TestVideo", 10, "TestPlan" );
 		Hosting hostingupdate = new Hosting( 5, 2, "TestVideoUpdated", 100, "TestPlanUpdated" );
-        
-        LearningPath learningPath = new LearningPath( 1, "Data Science", "Learn about data science", timestamp );
-        LearningPath learningPathupdate = new LearningPath( 1, "Test Update", "Test Update desc", timestamp );
-        
-		Professor professor = new Professor( 1,1, "Testname", "TestLastname", 25 );
-		Professor professorUpdate = new Professor( 8,2, "TestnameUpdate", "TestLastnameUpdate", 30 );
 		
-		Specialization specialization = new Specialization( 5, "Java Connections", "Testdescription", timestamp);
+		LearningPath learningPath = new LearningPath( 1, "Data Science", "Learn about data science", timestamp );
+		LearningPath learningPathupdate = new LearningPath( 1, "Test Update", "Test Update desc", timestamp );
+		
+		Professor professor = new Professor( 1, 1, "Testname", "TestLastname", 25 );
+		Professor professorUpdate = new Professor( 8, 2, "TestnameUpdate", "TestLastnameUpdate", 30 );
+		
+		Specialization specialization = new Specialization( 5, "Java Connections", "Testdescription", timestamp );
 		Specialization specializationUpdate = new Specialization( 5, "TestSpecialization", "Testdescription",
-				timestamp);
+				timestamp );
 		
 		Student student = new Student( 5, "TestStudent", "TestStudent", 15 );
 		Student studentUpdate = new Student( 5, "TestStudentUpdate", "TestStudentUpdate", 20 );
@@ -119,8 +119,8 @@ public class Runner{
         LOGGER.info( "Delete: ");
         impLearningPath.delete( learningPath );
          */
-        
-        //ImpProfessor
+		
+		//ImpProfessor
         /*
 		LOGGER.info( "Get index 1: " + impProfessor.get( 2 ));
 		

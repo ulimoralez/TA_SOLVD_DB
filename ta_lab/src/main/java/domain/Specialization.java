@@ -1,7 +1,6 @@
 package domain;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Specialization{
 	private int id;
@@ -9,7 +8,7 @@ public class Specialization{
 	private String description;
 	private Timestamp foundationAge;
 	
-	public Specialization(){
+	public Specialization( ){
 	
 	}
 	

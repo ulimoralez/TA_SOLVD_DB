@@ -7,7 +7,7 @@ public class Professor{
 	private String lastname;
 	private int age;
 	
-	public Professor(){
+	public Professor( ){
 	
 	}
 	
