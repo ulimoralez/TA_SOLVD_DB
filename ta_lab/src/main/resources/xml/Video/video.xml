@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<videos>
+    <video>
+        <videoId>1</videoId>
+        <hostingId>1</hostingId>
+        <name>HashSet in Java</name>
+        <description>Learn about Java Collections: Hashset</description>
+        <durationMinutes>12</durationMinutes>
+    </video>
+</videos>

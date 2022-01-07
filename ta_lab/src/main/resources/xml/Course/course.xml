@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<courses>
+    <course>
+        <courseId>1</courseId>
+        <videoId>1</videoId>
+        <learninPathId>1</learninPathId>
+        <name>Java Collections</name>
+        <description>Learn about Java Collections</description>
+        <durationHS>4</durationHS>
+    </course>
+    <course>
+        <courseId>2</courseId>
+        <videoId>2</videoId>
+        <learninPathId>1</learninPathId>
+        <name>Java Connection</name>
+        <description>Learn about Java Connection</description>
+        <durationHS>2</durationHS>
+    </course>
+</courses>

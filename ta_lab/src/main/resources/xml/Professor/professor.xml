@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<professors>
+    <professor>
+        <professorId>1</professorId>
+        <specializationId>1</specializationId>
+        <firstname>Leonardo</firstname>
+        <lastname>Da Vinci</lastname>
+        <age>34</age>
+    </professor>
+    <professor>
+        <professorId>2</professorId>
+        <specializationId>1</specializationId>
+        <firstname>Alejandro</firstname>
+        <lastname>El Capo</lastname>
+        <age>30</age>
+    </professor>
+</professors>

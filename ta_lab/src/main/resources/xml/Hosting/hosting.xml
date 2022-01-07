@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hostings>
+    <hosting>
+        <hostingId>1</hostingId>
+        <videoId>1</videoId>
+        <name>Rapidgator</name>
+        <maximumStorageGB>50</maximumStorageGB>
+        <plans>60gb $100</plans>
+    </hosting>
+    <hosting>
+        <hostingId>2</hostingId>
+        <videoId>2</videoId>
+        <name>Hostinger</name>
+        <maximumStorageGB>60</maximumStorageGB>
+        <plans>100gb $100</plans>
+    </hosting>
+</hostings>
