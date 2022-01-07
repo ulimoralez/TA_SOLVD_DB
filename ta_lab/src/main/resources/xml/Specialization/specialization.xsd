@@ -5,13 +5,19 @@
            elementFormDefault="qualified">
 
 
-    <xs:element name="specialization">
+    <xs:element name="specializations">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="specializationId" type="xs:int" />
-                <xs:element name="name" type="xs:string"/>
-                <xs:element name="description" type="xs:string"/>
-                <xs:element name="foundationAge" type="xs:dateTime"/>
+                <xs:element name="specialization">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="specializationId" type="xs:int" />
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="description" type="xs:string"/>
+                            <xs:element name="foundationAge" type="xs:dateTime"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

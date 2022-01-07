@@ -5,14 +5,20 @@
            elementFormDefault="qualified">
 
 
-    <xs:element name="hosting">
+    <xs:element name="hostings">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="hostingId" type="xs:int" />
-                <xs:element name="videoId" type="xs:int" />
-                <xs:element name="name" type="xs:string"/>
-                <xs:element name="maximumStorageGB" type="xs:int"/>
-                <xs:element name="plans" type="xs:string"/>
+                <xs:element name="hosting">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="hostingId" type="xs:int" />
+                            <xs:element name="videoId" type="xs:int" />
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="maximumStorageGB" type="xs:int"/>
+                            <xs:element name="plans" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

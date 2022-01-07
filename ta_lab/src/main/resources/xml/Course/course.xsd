@@ -5,15 +5,21 @@
            elementFormDefault="qualified">
 
 
-    <xs:element name="course">
+    <xs:element name="courses">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="courseId" type="xs:int" />
-                <xs:element name="videoId" type="xs:int"/>
-                <xs:element name="learninPathId" type="xs:int"/>
-                <xs:element name="name" type="xs:string"/>
-                <xs:element name="description" type="xs:string"/>
-                <xs:element name="durationHS" type="xs:int"/>
+                <xs:element name="course">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="courseId" type="xs:int" />
+                            <xs:element name="videoId" type="xs:int"/>
+                            <xs:element name="learninPathId" type="xs:int"/>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="description" type="xs:string"/>
+                            <xs:element name="durationHS" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
