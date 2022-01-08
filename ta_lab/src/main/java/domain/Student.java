@@ -1,5 +1,11 @@
 package domain;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+@XmlRootElement( name = "student" )
+@XmlType( propOrder = { "id", "firstname", "lastname", "age" } )
 public class Student{
 	private int id;
 	private String firstname;
@@ -21,6 +27,7 @@ public class Student{
 		return id;
 	}
 	
+	@XmlElement(name = "id")
 	public void setId( int id ){
 		this.id = id;
 	}
@@ -29,6 +36,7 @@ public class Student{
 		return firstname;
 	}
 	
+	@XmlElement(name = "firstname")
 	public void setFirstname( String firstname ){
 		this.firstname = firstname;
 	}
@@ -37,6 +45,7 @@ public class Student{
 		return lastname;
 	}
 	
+	@XmlElement(name = "lastname")
 	public void setLastname( String lastname ){
 		this.lastname = lastname;
 	}
@@ -45,6 +54,7 @@ public class Student{
 		return age;
 	}
 	
+	@XmlElement(name = "age")
 	public void setAge( int age ){
 		this.age = age;
 	}

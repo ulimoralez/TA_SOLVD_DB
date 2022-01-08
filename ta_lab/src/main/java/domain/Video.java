@@ -1,5 +1,11 @@
 package domain;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+@XmlRootElement( name = "video" )
+@XmlType( propOrder = { "id", "hostingId", "name", "description", "durationMinutes" } )
 public class Video{
 	private int id;
 	private int hostingId;
@@ -23,6 +29,7 @@ public class Video{
 		return id;
 	}
 	
+	@XmlElement(name = "id")
 	public void setId( int id ){
 		this.id = id;
 	}
@@ -31,6 +38,7 @@ public class Video{
 		return hostingId;
 	}
 	
+	@XmlElement(name = "hostingId")
 	public void setHostingId( int hostingId ){
 		this.hostingId = hostingId;
 	}
@@ -39,6 +47,7 @@ public class Video{
 		return name;
 	}
 	
+	@XmlElement(name = "name")
 	public void setName( String name ){
 		this.name = name;
 	}
@@ -47,6 +56,7 @@ public class Video{
 		return description;
 	}
 	
+	@XmlElement(name = "description")
 	public void setDescription( String description ){
 		this.description = description;
 	}
@@ -55,6 +65,7 @@ public class Video{
 		return durationMinutes;
 	}
 	
+	@XmlElement(name = "durationMinutes")
 	public void setDurationMinutes( int durationMinutes ){
 		this.durationMinutes = durationMinutes;
 	}

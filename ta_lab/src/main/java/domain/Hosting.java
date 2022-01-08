@@ -1,5 +1,11 @@
 package domain;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+@XmlRootElement( name = "hosting" )
+@XmlType( propOrder = { "id", "videoId", "name", "maximumStorageGB", "plans" } )
 public class Hosting{
 	private int id;
 	private int videoId;
@@ -27,6 +33,7 @@ public class Hosting{
 		return id;
 	}
 	
+	@XmlElement(name = "id")
 	public void setId( int id ){
 		this.id = id;
 	}
@@ -35,6 +42,7 @@ public class Hosting{
 		return videoId;
 	}
 	
+	@XmlElement(name = "videoId")
 	public void setVideoId( int videoId ){
 		this.videoId = videoId;
 	}
@@ -43,6 +51,7 @@ public class Hosting{
 		return name;
 	}
 	
+	@XmlElement(name = "name")
 	public void setName( String name ){
 		this.name = name;
 	}
@@ -51,6 +60,7 @@ public class Hosting{
 		return maximumStorageGB;
 	}
 	
+	@XmlElement(name = "maximumStorageGB")
 	public void setMaximumStorageGB( int maximumStorageGB ){
 		this.maximumStorageGB = maximumStorageGB;
 	}
@@ -59,6 +69,7 @@ public class Hosting{
 		return plans;
 	}
 	
+	@XmlElement(name = "plans")
 	public void setPlans( String plans ){
 		this.plans = plans;
 	}

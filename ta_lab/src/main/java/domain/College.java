@@ -1,7 +1,12 @@
 package domain;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
 import java.sql.Timestamp;
 
+@XmlRootElement( name = "college" )
+@XmlType( propOrder = { "id", "name", "foundationAge" } )
 public class College{
 	private int id;
 	private String name;
