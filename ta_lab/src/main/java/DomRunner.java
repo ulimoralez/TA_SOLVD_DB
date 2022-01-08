@@ -7,10 +7,10 @@ import java.util.logging.Logger;
 
 public class DomRunner{
 	public static void main( String[] args ){
-		Logger LOGGER = Logger.getLogger( DomRunner.class.getName() );
-		Dom dom = new Dom();
+		Logger LOGGER = Logger.getLogger( DomRunner.class.getName( ) );
+		Dom dom = new Dom( );
 		try{
-			dom.parseCollegeXML();
+			dom.parseCollegeXML( );
 		}catch( ParserConfigurationException | IOException | SAXException e ){
 			e.printStackTrace( );
 		}
