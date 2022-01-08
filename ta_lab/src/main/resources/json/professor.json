@@ -1,0 +1,10 @@
+{
+  "professor":
+  {
+    "id": 1,
+    "specializationId": 1,
+    "firstname": "Sheldon",
+    "lastname": "Cooper",
+    "age": 26
+  }
+}

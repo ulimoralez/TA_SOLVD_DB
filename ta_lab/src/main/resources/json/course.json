@@ -1,0 +1,10 @@
+{
+  "course": {
+    "id": 1,
+    "videoId": 1,
+    "learningPathId": 1,
+    "name": "Java Advanced",
+    "description": "Learn about the deepest concepts of the Java Language",
+    "duration_HS": 5
+  }
+}

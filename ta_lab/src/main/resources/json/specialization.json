@@ -1,0 +1,9 @@
+{
+  "specialization":
+  {
+    "id": 1,
+    "name": "Master in Spring Development",
+    "description":  "Capacity to build and develop applications with Spring",
+    "foundationAge": "2021-12-12"
+  }
+}

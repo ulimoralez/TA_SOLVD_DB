@@ -1,0 +1,10 @@
+{
+  "video":
+  {
+    "id":  1,
+    "hostingId":  1,
+    "name":  "Java List Interface",
+    "description": "Learn about Java List interface and its implementations",
+    "durationMinutes": 25
+  }
+}
