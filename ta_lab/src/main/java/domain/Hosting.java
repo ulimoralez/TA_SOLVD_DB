@@ -33,7 +33,7 @@ public class Hosting{
 		return id;
 	}
 	
-	@XmlElement(name = "id")
+	@XmlElement( name = "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
@@ -42,7 +42,7 @@ public class Hosting{
 		return videoId;
 	}
 	
-	@XmlElement(name = "videoId")
+	@XmlElement( name = "videoId" )
 	public void setVideoId( int videoId ){
 		this.videoId = videoId;
 	}
@@ -51,7 +51,7 @@ public class Hosting{
 		return name;
 	}
 	
-	@XmlElement(name = "name")
+	@XmlElement( name = "name" )
 	public void setName( String name ){
 		this.name = name;
 	}
@@ -60,7 +60,7 @@ public class Hosting{
 		return maximumStorageGB;
 	}
 	
-	@XmlElement(name = "maximumStorageGB")
+	@XmlElement( name = "maximumStorageGB" )
 	public void setMaximumStorageGB( int maximumStorageGB ){
 		this.maximumStorageGB = maximumStorageGB;
 	}
@@ -69,7 +69,7 @@ public class Hosting{
 		return plans;
 	}
 	
-	@XmlElement(name = "plans")
+	@XmlElement( name = "plans" )
 	public void setPlans( String plans ){
 		this.plans = plans;
 	}

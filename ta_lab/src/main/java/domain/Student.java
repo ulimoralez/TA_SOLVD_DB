@@ -27,7 +27,7 @@ public class Student{
 		return id;
 	}
 	
-	@XmlElement(name = "id")
+	@XmlElement( name = "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
@@ -36,7 +36,7 @@ public class Student{
 		return firstname;
 	}
 	
-	@XmlElement(name = "firstname")
+	@XmlElement( name = "firstname" )
 	public void setFirstname( String firstname ){
 		this.firstname = firstname;
 	}
@@ -45,7 +45,7 @@ public class Student{
 		return lastname;
 	}
 	
-	@XmlElement(name = "lastname")
+	@XmlElement( name = "lastname" )
 	public void setLastname( String lastname ){
 		this.lastname = lastname;
 	}
@@ -54,7 +54,7 @@ public class Student{
 		return age;
 	}
 	
-	@XmlElement(name = "age")
+	@XmlElement( name = "age" )
 	public void setAge( int age ){
 		this.age = age;
 	}

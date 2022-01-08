@@ -31,7 +31,7 @@ public class Specialization{
 		return id;
 	}
 	
-	@XmlElement(name = "id")
+	@XmlElement( name = "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
@@ -40,7 +40,7 @@ public class Specialization{
 		return name;
 	}
 	
-	@XmlElement(name = "name")
+	@XmlElement( name = "name" )
 	public void setName( String name ){
 		this.name = name;
 	}
@@ -49,7 +49,7 @@ public class Specialization{
 		return description;
 	}
 	
-	@XmlElement(name = "description")
+	@XmlElement( name = "description" )
 	public void setDescription( String description ){
 		this.description = description;
 	}
@@ -58,7 +58,7 @@ public class Specialization{
 		return foundationAge;
 	}
 	
-	@XmlElement(name = "foundationAge")
+	@XmlElement( name = "foundationAge" )
 	@XmlJavaTypeAdapter( TimestampJaxbAdapter.class )
 	public void setFoundationAge( Timestamp foundationAge ){
 		this.foundationAge = foundationAge;

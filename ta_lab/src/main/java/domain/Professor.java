@@ -29,7 +29,7 @@ public class Professor{
 		return id;
 	}
 	
-	@XmlElement(name = "id")
+	@XmlElement( name = "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
@@ -38,7 +38,7 @@ public class Professor{
 		return specializationId;
 	}
 	
-	@XmlElement(name = "specializationId")
+	@XmlElement( name = "specializationId" )
 	public void setSpecializationId( int specializationId ){
 		this.specializationId = specializationId;
 	}
@@ -47,7 +47,7 @@ public class Professor{
 		return firstname;
 	}
 	
-	@XmlElement(name = "firstname")
+	@XmlElement( name = "firstname" )
 	public void setFirstname( String firstname ){
 		this.firstname = firstname;
 	}
@@ -56,7 +56,7 @@ public class Professor{
 		return lastname;
 	}
 	
-	@XmlElement(name = "lastname")
+	@XmlElement( name = "lastname" )
 	public void setLastname( String lastname ){
 		this.lastname = lastname;
 	}
@@ -65,7 +65,7 @@ public class Professor{
 		return age;
 	}
 	
-	@XmlElement(name = "age")
+	@XmlElement( name = "age" )
 	public void setAge( int age ){
 		this.age = age;
 	}

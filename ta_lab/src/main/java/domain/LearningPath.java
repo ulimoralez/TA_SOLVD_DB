@@ -31,7 +31,7 @@ public class LearningPath{
 		return id;
 	}
 	
-	@XmlElement(name = "id")
+	@XmlElement( name = "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
@@ -40,7 +40,7 @@ public class LearningPath{
 		return name;
 	}
 	
-	@XmlElement(name = "name")
+	@XmlElement( name = "name" )
 	public void setName( String name ){
 		this.name = name;
 	}
@@ -49,7 +49,7 @@ public class LearningPath{
 		return description;
 	}
 	
-	@XmlElement(name = "description")
+	@XmlElement( name = "description" )
 	public void setDescription( String description ){
 		this.description = description;
 	}
@@ -58,7 +58,7 @@ public class LearningPath{
 		return creationDate;
 	}
 	
-	@XmlElement(name = "creationDate")
+	@XmlElement( name = "creationDate" )
 	@XmlJavaTypeAdapter( TimestampJaxbAdapter.class )
 	public void setCreationDate( Timestamp creationDate ){
 		this.creationDate = creationDate;
