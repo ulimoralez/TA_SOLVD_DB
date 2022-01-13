@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<colleges>
+    <college>
+        <collegeId>1</collegeId>
+        <name>UTN</name>
+        <foundation_age>2002-09-24</foundation_age>
+    </college>
+    <college>
+        <collegeId>2</collegeId>
+        <name>SOLVD</name>
+        <foundation_age>2003-08-22</foundation_age>
+    </college>
+</colleges>

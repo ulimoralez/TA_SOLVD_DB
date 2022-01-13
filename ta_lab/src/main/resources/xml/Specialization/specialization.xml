@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<specializations>
+    <specialization>
+        <specializationId>1</specializationId>
+        <name>Master in Java</name>
+        <description>Master in building applications with the best practices in Java</description>
+        <foundationAge>2012-12-25</foundationAge>
+    </specialization>
+</specializations>

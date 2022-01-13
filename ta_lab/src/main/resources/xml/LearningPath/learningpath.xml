@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<learningpaths>
+    <learningpath>
+        <learningpathId>1</learningpathId>
+        <name>API development with Java</name>
+        <description>Learn to develop an API with java spring</description>
+        <creationDate>2021-04-22</creationDate>
+    </learningpath>
+    <learningpath>
+        <learningpathId>2</learningpathId>
+        <name>API development with Javascript</name>
+        <description>Learn to develop an API with javascript nodejs</description>
+        <creationDate>2021-03-22</creationDate>
+    </learningpath>
+</learningpaths>

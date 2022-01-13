@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<students>
+    <student>
+        <studentId>1</studentId>
+        <firstname>Ulises</firstname>
+        <lastname>Moralez</lastname>
+        <age>21</age>
+    </student>
+</students>

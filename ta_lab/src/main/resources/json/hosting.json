@@ -1,0 +1,9 @@
+{
+  "hosting": {
+    "id": 1,
+    "videoId": 1,
+    "name": "Mediafire",
+    "maximumStorageGB": 60,
+    "plans": "400gb $500"
+  }
+}

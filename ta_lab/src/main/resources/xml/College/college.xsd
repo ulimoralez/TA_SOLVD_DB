@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.w3schools.com"
+           xmlns="https://www.w3schools.com"
+           elementFormDefault="qualified">
+
+
+    <xs:element name="colleges">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="college">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="collegeId" type="xs:int" />
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="foundation_age" type="xs:dateTime"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

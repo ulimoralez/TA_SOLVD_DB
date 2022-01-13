@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<categories>
+    <category>
+        <categoryId>1</categoryId>
+        <name>Programming</name>
+        <description>Courses about programming</description>
+    </category>
+    <category>
+        <categoryId>2</categoryId>
+        <name>Java</name>
+        <description>Courses about the Java programming language</description>
+    </category>
+    <category>
+        <categoryId>3</categoryId>
+        <name>Python</name>
+        <description>Courses about the Python programming language</description>
+    </category>
+</categories>
