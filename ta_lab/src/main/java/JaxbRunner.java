@@ -1,6 +1,6 @@
-import domain.Category;
+import entities.Category;
 import jakarta.xml.bind.JAXBException;
-import utils.xml.jaxb.Jaxb;
+import xml.service.jaxb.Jaxb;
 
 import java.io.FileNotFoundException;
 import java.util.logging.Logger;

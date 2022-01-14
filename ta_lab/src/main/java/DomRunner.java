@@ -1,5 +1,5 @@
 import org.xml.sax.SAXException;
-import utils.xml.dom.Dom;
+import xml.service.dom.Dom;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;

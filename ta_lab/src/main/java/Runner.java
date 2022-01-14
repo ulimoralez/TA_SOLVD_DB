@@ -1,5 +1,5 @@
-import domain.*;
-import implementation.*;
+import entities.*;
+import jdbc.dao.*;
 
 import java.sql.Timestamp;
 import java.util.logging.Logger;

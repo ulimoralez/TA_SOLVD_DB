@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.Category;
-import utils.json.JSONUtils;
+import entities.Category;
+import json.utils.JSONUtils;
 
 import java.io.IOException;
 import java.util.logging.Logger;

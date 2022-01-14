@@ -1,6 +1,6 @@
-import domain.Category;
+import entities.Category;
 import org.xml.sax.SAXException;
-import utils.xml.stax.Stax;
+import xml.service.stax.Stax;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
