@@ -80,10 +80,10 @@ public class ImpCourse implements IDAO< Course >{
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( INSERT, PreparedStatement.RETURN_GENERATED_KEYS );
-			preparedStatement.setInt( 1, course.getLearninPathId( ) );
+			preparedStatement.setInt( 1, course.getLearningPathId( ) );
 			preparedStatement.setString( 2, course.getName( ) );
 			preparedStatement.setString( 3, course.getDescription( ) );
-			preparedStatement.setInt( 4, course.getDurationHS( ) );
+			preparedStatement.setFloat( 4, course.getDurationHS( ) );
 			preparedStatement.setInt( 5, course.getId( ) );
 			
 			preparedStatement.executeUpdate( );
@@ -100,10 +100,10 @@ public class ImpCourse implements IDAO< Course >{
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( UPDATE );
-			preparedStatement.setInt( 1, course.getLearninPathId( ) );
+			preparedStatement.setInt( 1, course.getLearningPathId( ) );
 			preparedStatement.setString( 2, course.getName( ) );
 			preparedStatement.setString( 3, course.getDescription( ) );
-			preparedStatement.setInt( 4, course.getDurationHS( ) );
+			preparedStatement.setFloat( 4, course.getDurationHS( ) );
 			preparedStatement.setInt( 5, course.getId( ) );
 			preparedStatement.executeUpdate( );
 			preparedStatement.close( );

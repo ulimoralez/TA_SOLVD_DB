@@ -5,36 +5,50 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 @XmlRootElement( name = "course" )
-@XmlType( propOrder = { "id", "videoId", "learninPathId", "name", "description", "durationHS" } )
+@XmlType( propOrder = { "id", "videoId", "learningPathId", "name", "description", "durationHS", "creation_date" } )
 @JsonRootName(value = "course")
-@JsonPropertyOrder({ "id", "videoId", "learninPathId", "name", "description", "durationHS" })
+@JsonPropertyOrder({ "id", "videoId", "learningPathId", "name", "description", "durationHS","creation_date" })
 public class Course{
 	private int id;
 	private int videoId;
-	private int learninPathId;
+	private int learningPathId;
 	private String name;
 	private String description;
-	private int durationHS;
+	private float durationHS;
+	private LocalDateTime creation_date;
 	
 	@JsonCreator
 	public Course(
 			@JsonProperty("id") int id,
 			@JsonProperty("videoId") int videoId,
-			@JsonProperty("learninPathId") int learninPathId,
+			@JsonProperty("learningPathId") int learninPathId,
 			@JsonProperty("name") String name,
 			@JsonProperty("description") String description,
-			@JsonProperty("durationHS") int durationHS ){
+			@JsonProperty("durationHS") float durationHS ){
 		this( videoId, learninPathId, name, description, durationHS );
 		this.id = id;
 	}
 	
-	public Course( int videoId, int learninPathId, String name, String description, int durationHS ){
+	public Course( int videoId, int learninPathId, String name, String description, float durationHS ){
 		this.videoId = videoId;
-		this.learninPathId = learninPathId;
+		this.learningPathId = learninPathId;
 		this.name = name;
 		this.description = description;
 		this.durationHS = durationHS;
+	}
+	
+	public Course( int videoId, int learninPathId, String name, String description, float durationHS,
+	               LocalDateTime creation_date ){
+		this.videoId = videoId;
+		this.learningPathId = learninPathId;
+		this.name = name;
+		this.description = description;
+		this.durationHS = durationHS;
+		this.creation_date = creation_date;
 	}
 	
 	@JsonGetter("id")
@@ -59,15 +73,15 @@ public class Course{
 		this.videoId = videoId;
 	}
 	
-	@JsonGetter("learninPathId")
-	public int getLearninPathId( ){
-		return learninPathId;
+	@JsonGetter("learningPathId")
+	public int getLearningPathId( ){
+		return learningPathId;
 	}
 	
-	@XmlElement( name = "learninPathId" )
-	@JsonSetter("learninPathId")
-	public void setLearninPathId( int learninPathId ){
-		this.learninPathId = learninPathId;
+	@XmlElement( name = "learningPathId" )
+	@JsonSetter("learningPathId")
+	public void setLearningPathId( int learningPathId ){
+		this.learningPathId = learningPathId;
 	}
 	
 	@JsonGetter("name")
@@ -93,13 +107,13 @@ public class Course{
 	}
 	
 	@JsonGetter("durationHS")
-	public int getDurationHS( ){
+	public float getDurationHS( ){
 		return durationHS;
 	}
 	
 	@XmlElement( name = "durationHS" )
 	@JsonSetter("durationHS")
-	public void setDurationHS( int durationHS ){
+	public void setDurationHS( float durationHS ){
 		this.durationHS = durationHS;
 	}
 	
@@ -109,7 +123,7 @@ public class Course{
 		return "Course{" +
 				"id=" + id +
 				", videoId=" + videoId +
-				", learninPathId=" + learninPathId +
+				", learningPathId=" + learningPathId +
 				", name='" + name + '\'' +
 				", description='" + description + '\'' +
 				", durationHS=" + durationHS +
