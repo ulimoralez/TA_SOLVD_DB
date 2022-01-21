@@ -1,6 +1,8 @@
+package runners;
+
 import entities.Category;
 import org.xml.sax.SAXException;
-import xml.service.stax.Stax;
+import xml.utils.parsers.stax.Stax;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;

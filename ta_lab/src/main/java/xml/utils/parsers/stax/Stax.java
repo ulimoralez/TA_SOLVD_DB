@@ -1,4 +1,4 @@
-package xml.service.stax;
+package xml.utils.parsers.stax;
 
 import entities.Category;
 import org.xml.sax.SAXException;

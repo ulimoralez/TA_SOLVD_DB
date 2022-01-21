@@ -1,5 +1,7 @@
+package runners;
+
 import org.xml.sax.SAXException;
-import xml.service.dom.Dom;
+import xml.utils.parsers.dom.Dom;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;

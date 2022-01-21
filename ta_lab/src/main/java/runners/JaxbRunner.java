@@ -1,6 +1,8 @@
+package runners;
+
 import entities.Category;
 import jakarta.xml.bind.JAXBException;
-import xml.service.jaxb.Jaxb;
+import xml.utils.parsers.jaxb.Jaxb;
 
 import java.io.FileNotFoundException;
 import java.util.logging.Logger;

@@ -1,4 +1,4 @@
-package xml.service.dom;
+package xml.utils.parsers.dom;
 
 import entities.College;
 import org.w3c.dom.Document;

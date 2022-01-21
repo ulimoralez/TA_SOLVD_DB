@@ -1,3 +1,5 @@
+package runners;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Category;
 import json.utils.JSONUtils;
