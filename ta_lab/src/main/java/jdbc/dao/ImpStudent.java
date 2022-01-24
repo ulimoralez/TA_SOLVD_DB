@@ -1,8 +1,8 @@
 package jdbc.dao;
 
-import jdbc.services.DBConnection;
 import entities.Student;
-import jdbc.interfaces.IDAO;
+import jdbc.connection.DBConnection;
+import services.interfaces.IDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
