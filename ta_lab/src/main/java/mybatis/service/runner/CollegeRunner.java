@@ -10,25 +10,25 @@ import java.util.logging.Logger;
 
 public class CollegeRunner{
 	public static void main( String[] args ){
-		Logger LOGGER = Logger.getLogger( CollegeRunner.class.getName() );
+		Logger LOGGER = Logger.getLogger( CollegeRunner.class.getName( ) );
 		long now = System.currentTimeMillis( );
 		Timestamp timestamp = new Timestamp( now );
 		College college = new College( "MyBatisCollege", timestamp );
 		College collegeupdate = new College( "MyBatisCollegeUpdate", timestamp, 8 );
 		
-		try( SqlSession session = new ConnectionBuilder().buildConnection() ){
+		try( SqlSession session = new ConnectionBuilder( ).buildConnection( ) ){
 			session.getMapper( CollegeMapper.class ).save( college );
 			LOGGER.info( "CourseMapper Save" );
 			session.getMapper( CollegeMapper.class ).update( collegeupdate );
 			LOGGER.info( "CourseMapper Update" );
 			session.getMapper( CollegeMapper.class ).deleteById( 5 );
 			LOGGER.info( "CourseMapper Delete" );
-			System.out.println(session.getMapper( CollegeMapper.class ).getById( 15 ) );
+			System.out.println( session.getMapper( CollegeMapper.class ).getById( 15 ) );
 			LOGGER.info( "CourseMapper Get By Id" );
-			System.out.println(session.getMapper( CollegeMapper.class ).getAll());
+			System.out.println( session.getMapper( CollegeMapper.class ).getAll( ) );
 			LOGGER.info( "CourseMapper Get All Categories" );
 			
-			session.commit();
+			session.commit( );
 		}
 	}
 }
