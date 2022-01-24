@@ -5,19 +5,23 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import xml.service.jaxb.TimestampJaxbAdapter;
+import xml.utils.parsers.jaxb.TimestampJaxbAdapter;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlRootElement( name = "learningpath" )
 @XmlType( propOrder = { "id", "name", "description", "creationDate" } )
-@JsonRootName(value = "learningpath")
-@JsonPropertyOrder({ "id", "name", "description", "creationDate" })
+@JsonRootName( value = "learningpath" )
+@JsonPropertyOrder( { "id", "name", "description", "creationDate" } )
 public class LearningPath{
 	private int id;
 	private String name;
 	private String description;
 	private Timestamp creationDate;
+	
+	private List< Course > courseList = new ArrayList<>( );
 	
 	public LearningPath( ){
 	
@@ -25,56 +29,57 @@ public class LearningPath{
 	
 	@JsonCreator
 	public LearningPath(
-			@JsonProperty("id")int id,
-			@JsonProperty("name")String name,
-			@JsonProperty("description")String description,
-			@JsonProperty("creationDate")Timestamp creationDate ){
+			@JsonProperty( "id" ) int id,
+			@JsonProperty( "name" ) String name,
+			@JsonProperty( "description" ) String description,
+			@JsonProperty( "creationDate" ) Timestamp creationDate ){
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.creationDate = creationDate;
 	}
-	@JsonGetter("id")
+	
+	@JsonGetter( "id" )
 	public int getId( ){
 		return id;
 	}
 	
 	@XmlElement( name = "id" )
-	@JsonSetter("id")
+	@JsonSetter( "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
 	
-	@JsonGetter("name")
+	@JsonGetter( "name" )
 	public String getName( ){
 		return name;
 	}
 	
 	@XmlElement( name = "name" )
-	@JsonSetter("name")
+	@JsonSetter( "name" )
 	public void setName( String name ){
 		this.name = name;
 	}
 	
-	@JsonGetter("description")
+	@JsonGetter( "description" )
 	public String getDescription( ){
 		return description;
 	}
 	
 	@XmlElement( name = "description" )
-	@JsonSetter("description")
+	@JsonSetter( "description" )
 	public void setDescription( String description ){
 		this.description = description;
 	}
 	
-	@JsonGetter("creationDate")
+	@JsonGetter( "creationDate" )
 	public Timestamp getCreationDate( ){
 		return creationDate;
 	}
 	
 	@XmlElement( name = "creationDate" )
 	@XmlJavaTypeAdapter( TimestampJaxbAdapter.class )
-	@JsonSetter("creationDate")
+	@JsonSetter( "creationDate" )
 	public void setCreationDate( Timestamp creationDate ){
 		this.creationDate = creationDate;
 	}

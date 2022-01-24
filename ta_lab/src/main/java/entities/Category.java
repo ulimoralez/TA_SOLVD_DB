@@ -7,9 +7,10 @@ import jakarta.xml.bind.annotation.XmlType;
 
 @XmlRootElement( name = "category" )
 @XmlType( propOrder = { "id", "name", "description" } )
-@JsonRootName(value = "category")
-@JsonPropertyOrder({"id", "name","description" })
+@JsonRootName( value = "category" )
+@JsonPropertyOrder( { "id", "name", "description" } )
 public class Category{
+	
 	private int id;
 	private String name;
 	private String description;
@@ -21,9 +22,9 @@ public class Category{
 	@JsonCreator
 	public Category
 			(
-			@JsonProperty("id") int id,
-			@JsonProperty("name") String name,
-			@JsonProperty("description") String description
+					@JsonProperty( "id" ) int id,
+					@JsonProperty( "name" ) String name,
+					@JsonProperty( "description" ) String description
 			){
 		this( name, description );
 		this.id = id;
@@ -35,35 +36,35 @@ public class Category{
 		this.description = description;
 	}
 	
-	@JsonGetter("id")
+	@JsonGetter( "id" )
 	public int getId( ){
 		return id;
 	}
 	
 	@XmlElement( name = "id" )
-	@JsonSetter("id")
+	@JsonSetter( "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
 	
-	@JsonGetter("name")
+	@JsonGetter( "name" )
 	public String getName( ){
 		return name;
 	}
 	
 	@XmlElement( name = "name" )
-	@JsonSetter("name")
+	@JsonSetter( "name" )
 	public void setName( String name ){
 		this.name = name;
 	}
 	
-	@JsonGetter("description")
+	@JsonGetter( "description" )
 	public String getDescription( ){
 		return description;
 	}
 	
 	@XmlElement( name = "description" )
-	@JsonSetter("description")
+	@JsonSetter( "description" )
 	public void setDescription( String description ){
 		this.description = description;
 	}

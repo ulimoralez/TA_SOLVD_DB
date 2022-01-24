@@ -6,24 +6,28 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlRootElement( name = "college" )
 @XmlType( propOrder = { "id", "name", "foundationAge" } )
-@JsonRootName(value = "college")
-@JsonPropertyOrder({"id", "name","foundationAge" })
+@JsonRootName( value = "college" )
+@JsonPropertyOrder( { "id", "name", "foundationAge" } )
 public class College{
 	private int id;
 	private String name;
 	private Timestamp foundationAge;
+	
+	private List< Student > students = new ArrayList<>( );
 	
 	public College( ){
 	}
 	
 	@JsonCreator
 	public College(
-			@JsonProperty("name") String name,
-			@JsonProperty("foundationAge") Timestamp foundationAge,
-			@JsonProperty("id") int id ){
+			@JsonProperty( "name" ) String name,
+			@JsonProperty( "foundationAge" ) Timestamp foundationAge,
+			@JsonProperty( "id" ) int id ){
 		this( name, foundationAge );
 		this.id = id;
 	}
@@ -33,35 +37,35 @@ public class College{
 		this.foundationAge = foundationAge;
 	}
 	
-	@JsonGetter("id")
+	@JsonGetter( "id" )
 	public int getId( ){
 		return id;
 	}
 	
 	@XmlElement( name = "id" )
-	@JsonSetter("id")
+	@JsonSetter( "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
 	
-	@JsonGetter("name")
+	@JsonGetter( "name" )
 	public String getName( ){
 		return name;
 	}
 	
 	@XmlElement( name = "name" )
-	@JsonSetter("name")
+	@JsonSetter( "name" )
 	public void setName( String name ){
 		this.name = name;
 	}
 	
-	@JsonGetter("foundationAge")
+	@JsonGetter( "foundationAge" )
 	public Timestamp getFoundationAge( ){
 		return foundationAge;
 	}
 	
 	@XmlElement( name = "foundationAge" )
-	@JsonSetter("foundationAge")
+	@JsonSetter( "foundationAge" )
 	public void setFoundationAge( Timestamp foundationAge ){
 		this.foundationAge = foundationAge;
 	}

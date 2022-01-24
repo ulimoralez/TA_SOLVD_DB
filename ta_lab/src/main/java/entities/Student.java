@@ -7,13 +7,15 @@ import jakarta.xml.bind.annotation.XmlType;
 
 @XmlRootElement( name = "student" )
 @XmlType( propOrder = { "id", "firstname", "lastname", "age" } )
-@JsonRootName(value = "student")
-@JsonPropertyOrder({ "id", "firstname", "lastname", "age" })
+@JsonRootName( value = "student" )
+@JsonPropertyOrder( { "id", "firstname", "lastname", "age" } )
 public class Student{
 	private int id;
 	private String firstname;
 	private String lastname;
 	private int age;
+	
+	private int collegeId;
 	
 	public Student( ){
 	
@@ -21,56 +23,56 @@ public class Student{
 	
 	@JsonCreator
 	public Student(
-			@JsonProperty("id")int id,
-			@JsonProperty("firstname")String firstname,
-			@JsonProperty("lastname")String lastname,
-			@JsonProperty("age")int age ){
+			@JsonProperty( "id" ) int id,
+			@JsonProperty( "firstname" ) String firstname,
+			@JsonProperty( "lastname" ) String lastname,
+			@JsonProperty( "age" ) int age ){
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.age = age;
 	}
 	
-	@JsonGetter("id")
+	@JsonGetter( "id" )
 	public int getId( ){
 		return id;
 	}
 	
 	@XmlElement( name = "id" )
-	@JsonSetter("id")
+	@JsonSetter( "id" )
 	public void setId( int id ){
 		this.id = id;
 	}
 	
-	@JsonGetter("firstname")
+	@JsonGetter( "firstname" )
 	public String getFirstname( ){
 		return firstname;
 	}
 	
 	@XmlElement( name = "firstname" )
-	@JsonSetter("firstname")
+	@JsonSetter( "firstname" )
 	public void setFirstname( String firstname ){
 		this.firstname = firstname;
 	}
 	
-	@JsonGetter("lastname")
+	@JsonGetter( "lastname" )
 	public String getLastname( ){
 		return lastname;
 	}
 	
 	@XmlElement( name = "lastname" )
-	@JsonSetter("lastname")
+	@JsonSetter( "lastname" )
 	public void setLastname( String lastname ){
 		this.lastname = lastname;
 	}
 	
-	@JsonGetter("age")
+	@JsonGetter( "age" )
 	public int getAge( ){
 		return age;
 	}
 	
 	@XmlElement( name = "age" )
-	@JsonSetter("age")
+	@JsonSetter( "age" )
 	public void setAge( int age ){
 		this.age = age;
 	}
