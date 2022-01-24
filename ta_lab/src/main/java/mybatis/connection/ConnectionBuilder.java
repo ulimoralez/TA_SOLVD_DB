@@ -12,13 +12,13 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import javax.sql.DataSource;
 
 public class ConnectionBuilder{
-	public SqlSession buildConnection() {
-		DataSource dataSource = new PooledDataSource("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/ta_lab",
-				"root", "43346918Uli");
+	public SqlSession buildConnection( ){
+		DataSource dataSource = new PooledDataSource( "com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/ta_lab",
+				"root", "43346918Uli" );
 		
-		Environment environment = new Environment("Development", new JdbcTransactionFactory(), dataSource);
+		Environment environment = new Environment( "Development", new JdbcTransactionFactory( ), dataSource );
 		
-		Configuration configuration = new Configuration(environment);
+		Configuration configuration = new Configuration( environment );
 		configuration.addMapper( CategoryMapper.class );
 		configuration.addMapper( CollegeMapper.class );
 		configuration.addMapper( CourseMapper.class );
@@ -30,9 +30,9 @@ public class ConnectionBuilder{
 		configuration.addMapper( VideoMapper.class );
 		//always add mappers to configuration
 		
-		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-		SqlSessionFactory factory = builder.build(configuration);
+		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder( );
+		SqlSessionFactory factory = builder.build( configuration );
 		
-		return factory.openSession();
+		return factory.openSession( );
 	}
 }

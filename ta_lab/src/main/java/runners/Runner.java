@@ -39,8 +39,8 @@ public class Runner{
 		LearningPath learningPath = new LearningPath( 1, "Data Science", "Learn about data science", timestamp );
 		LearningPath learningPathupdate = new LearningPath( 1, "Test Update", "Test Update desc", timestamp );
 		
-		Professor professor = new Professor( 1, 1, "Testname", "TestLastname", 25 );
-		Professor professorUpdate = new Professor( 8, 2, "TestnameUpdate", "TestLastnameUpdate", 30 );
+		Professor professor = new Professor( 1, "Testname", "TestLastname", 25 );
+		Professor professorUpdate = new Professor( 8, "TestnameUpdate", "TestLastnameUpdate", 30 );
 		
 		Specialization specialization = new Specialization( 5, "Java Connections", "Testdescription", timestamp );
 		Specialization specializationUpdate = new Specialization( 5, "TestSpecialization", "Testdescription",
