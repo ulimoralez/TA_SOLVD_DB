@@ -3,14 +3,14 @@ package jdbc.services;
 import entities.Category;
 import entities.Course;
 import jdbc.dao.ImpCategory;
-import jdbc.interfaces.IDAO;
+import services.interfaces.IDAO;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CategoryJDBCService implements IDAO< Category>{
-	private final ImpCategory impCategory = new ImpCategory();
+public class CategoryJDBCService implements IDAO< Category >{
+	private final ImpCategory impCategory = new ImpCategory( );
 	
 	
 	@Override
@@ -20,7 +20,7 @@ public class CategoryJDBCService implements IDAO< Category>{
 	
 	@Override
 	public List< Category > getAll( ){
-		return impCategory.getAll();
+		return impCategory.getAll( );
 	}
 	
 	@Override
@@ -38,8 +38,8 @@ public class CategoryJDBCService implements IDAO< Category>{
 		impCategory.delete( category );
 	}
 	
-	public List< Course > getCoursesByCategory(Category category){
-		List<Course> courses = new ArrayList<>(  );
+	public List< Course > getCoursesByCategory( Category category ){
+		List< Course > courses = new ArrayList<>( );
 		
 		return courses;
 	}

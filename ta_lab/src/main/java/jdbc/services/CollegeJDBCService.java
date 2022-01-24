@@ -2,13 +2,13 @@ package jdbc.services;
 
 import entities.College;
 import jdbc.dao.ImpCollege;
-import jdbc.interfaces.IDAO;
+import services.interfaces.IDAO;
 
 import java.util.List;
 import java.util.Optional;
 
 public class CollegeJDBCService implements IDAO< College >{
-	private final ImpCollege impCollege = new ImpCollege();
+	private final ImpCollege impCollege = new ImpCollege( );
 	
 	@Override
 	public Optional< College > get( int id ){
@@ -17,7 +17,7 @@ public class CollegeJDBCService implements IDAO< College >{
 	
 	@Override
 	public List< College > getAll( ){
-		return impCollege.getAll();
+		return impCollege.getAll( );
 	}
 	
 	@Override

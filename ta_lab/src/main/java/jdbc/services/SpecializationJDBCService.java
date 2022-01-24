@@ -2,13 +2,13 @@ package jdbc.services;
 
 import entities.Specialization;
 import jdbc.dao.ImpSpecialization;
-import jdbc.interfaces.IDAO;
+import services.interfaces.IDAO;
 
 import java.util.List;
 import java.util.Optional;
 
-public class SpecializationJDBCService implements IDAO< Specialization>{
-	private final ImpSpecialization impSpecialization = new ImpSpecialization();
+public class SpecializationJDBCService implements IDAO< Specialization >{
+	private final ImpSpecialization impSpecialization = new ImpSpecialization( );
 	
 	@Override
 	public Optional< Specialization > get( int id ){
@@ -17,7 +17,7 @@ public class SpecializationJDBCService implements IDAO< Specialization>{
 	
 	@Override
 	public List< Specialization > getAll( ){
-		return impSpecialization.getAll();
+		return impSpecialization.getAll( );
 	}
 	
 	@Override
@@ -32,6 +32,6 @@ public class SpecializationJDBCService implements IDAO< Specialization>{
 	
 	@Override
 	public void delete( Specialization specialization ){
-		impSpecialization.delete( specialization);
+		impSpecialization.delete( specialization );
 	}
 }

@@ -2,13 +2,13 @@ package jdbc.services;
 
 import entities.Video;
 import jdbc.dao.ImpVideo;
-import jdbc.interfaces.IDAO;
+import services.interfaces.IDAO;
 
 import java.util.List;
 import java.util.Optional;
 
-public class VideoJDBCService implements IDAO< Video>{
-	private final ImpVideo impVideo = new ImpVideo();
+public class VideoJDBCService implements IDAO< Video >{
+	private final ImpVideo impVideo = new ImpVideo( );
 	
 	
 	@Override
@@ -18,7 +18,7 @@ public class VideoJDBCService implements IDAO< Video>{
 	
 	@Override
 	public List< Video > getAll( ){
-		return impVideo.getAll();
+		return impVideo.getAll( );
 	}
 	
 	@Override

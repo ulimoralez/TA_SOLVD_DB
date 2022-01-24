@@ -2,13 +2,13 @@ package jdbc.services;
 
 import entities.Professor;
 import jdbc.dao.ImpProfessor;
-import jdbc.interfaces.IDAO;
+import services.interfaces.IDAO;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ProfessorJDBCService implements IDAO< Professor>{
-	private final ImpProfessor impProfessor = new ImpProfessor();
+public class ProfessorJDBCService implements IDAO< Professor >{
+	private final ImpProfessor impProfessor = new ImpProfessor( );
 	
 	@Override
 	public Optional< Professor > get( int id ){
@@ -17,7 +17,7 @@ public class ProfessorJDBCService implements IDAO< Professor>{
 	
 	@Override
 	public List< Professor > getAll( ){
-		return impProfessor.getAll();
+		return impProfessor.getAll( );
 	}
 	
 	@Override

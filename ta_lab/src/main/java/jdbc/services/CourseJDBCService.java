@@ -2,13 +2,13 @@ package jdbc.services;
 
 import entities.Course;
 import jdbc.dao.ImpCourse;
-import jdbc.interfaces.IDAO;
+import services.interfaces.IDAO;
 
 import java.util.List;
 import java.util.Optional;
 
 public class CourseJDBCService implements IDAO< Course >{
-	private final ImpCourse impCourse = new ImpCourse();
+	private final ImpCourse impCourse = new ImpCourse( );
 	
 	@Override
 	public Optional< Course > get( int id ){
@@ -17,7 +17,7 @@ public class CourseJDBCService implements IDAO< Course >{
 	
 	@Override
 	public List< Course > getAll( ){
-		return impCourse.getAll();
+		return impCourse.getAll( );
 	}
 	
 	@Override
