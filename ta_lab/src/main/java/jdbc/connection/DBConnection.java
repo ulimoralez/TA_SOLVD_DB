@@ -1,10 +1,15 @@
 package jdbc.connection;
 
+import proxypattern.ITestConnectionDB;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
-public class DBConnection{
+public class DBConnection implements ITestConnectionDB{
+	private final Logger LOGGER = Logger.getLogger( DBConnection.class.getName( ) );
+	
 	private String url = "jdbc:mysql://127.0.0.1:3306/ta_lab";
 	private String username = "root";
 	private String password = "43346918Uli";
@@ -51,5 +56,11 @@ public class DBConnection{
 			e.printStackTrace( );
 		}
 		return connection;
+	}
+	
+	@Override
+	public void ping( ){
+		Connection connection = null;
+		LOGGER.info( "Ping to Database! - 89ms" );
 	}
 }
