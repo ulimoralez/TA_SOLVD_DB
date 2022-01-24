@@ -82,7 +82,6 @@ public class ImpProfessor implements IDAO< Professor >{
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( INSERT, PreparedStatement.RETURN_GENERATED_KEYS );
-			preparedStatement.setInt( 1, professor.getSpecializationId( ) );
 			preparedStatement.setString( 2, professor.getFirstname( ) );
 			preparedStatement.setString( 3, professor.getLastname( ) );
 			preparedStatement.setInt( 4, professor.getAge( ) );
@@ -101,7 +100,6 @@ public class ImpProfessor implements IDAO< Professor >{
 		dbconnection = new DBConnection( ).getConnetion( );
 		try{
 			preparedStatement = dbconnection.prepareStatement( UPDATE );
-			preparedStatement.setInt( 1, professor.getSpecializationId( ) );
 			preparedStatement.setString( 2, professor.getFirstname( ) );
 			preparedStatement.setString( 3, professor.getLastname( ) );
 			preparedStatement.setInt( 4, professor.getAge( ) );
@@ -134,7 +132,6 @@ public class ImpProfessor implements IDAO< Professor >{
 	private Professor createObject( ResultSet resultSet ) throws SQLException{
 		Professor professor = new Professor( );
 		professor.setId( resultSet.getInt( 1 ) );
-		professor.setSpecializationId( resultSet.getInt( 2 ) );
 		professor.setFirstname( resultSet.getString( 3 ) );
 		professor.setLastname( resultSet.getString( 4 ) );
 		professor.setAge( resultSet.getInt( 5 ) );

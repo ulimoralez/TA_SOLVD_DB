@@ -1,15 +1,19 @@
 package entities;
 
 import com.fasterxml.jackson.annotation.*;
+import factorypattern.IPeople;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
+
+import java.util.logging.Logger;
 
 @XmlRootElement( name = "student" )
 @XmlType( propOrder = { "id", "firstname", "lastname", "age" } )
 @JsonRootName( value = "student" )
 @JsonPropertyOrder( { "id", "firstname", "lastname", "age" } )
-public class Student{
+public class Student implements IPeople{
+	private final Logger LOGGER = Logger.getLogger( Student.class.getName( ) );
 	private int id;
 	private String firstname;
 	private String lastname;
@@ -85,5 +89,21 @@ public class Student{
 				", lastname='" + lastname + '\'' +
 				", age=" + age +
 				'}';
+	}
+	
+	@Override
+	public void walk( ){
+		LOGGER.info( "Student walking :)" );
+		
+	}
+	
+	@Override
+	public boolean isProfessor( ){
+		return false;
+	}
+	
+	@Override
+	public boolean isStudent( ){
+		return true;
 	}
 }
